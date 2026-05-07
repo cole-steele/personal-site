@@ -4,16 +4,35 @@
   class="fixed top-0 z-100 w-full bg-[var(--bg)] transition-colors duration-300"
 >
   <div class="flex items-center justify-between px-12 py-5">
-    <a href="/" class="nav-logo">
-      <div
-        class="flex h-9 w-9 items-center justify-center rounded-full bg-[var(--text)] text-[var(--bg)] font-bold text-xs transition-colors duration-300"
-      >
-        CS
+    <a href="/" id="nav-logo" class="nav-logo">
+      <div class="avatar-wrapper">
+        <div class="avatar-clip">
+          <img
+            src="/diggidty-dog.png"
+            alt="Cole Steele"
+            class="w-full h-full rounded-full object-cover"
+          />
+        </div>
+        <div class="bork-tooltip">bork!</div>
       </div>
       <span class="font-medium text-sm">Cole Steele</span>
     </a>
 
-    <div class="flex items-center gap-4">
+    <div class="hidden md:flex items-center gap-6">
+      <a href="/#main-content" class="nav-link">About</a>
+      <a href="/#experience" class="nav-link">Experience</a>
+      <a href="/#education" class="nav-link">Education</a>
+      <a href="/#skills" class="nav-link">Skills</a>
+      <a href="/#projects" class="nav-link">Projects</a>
+    </div>
+
+    <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1 bg-transparent border-none cursor-pointer" aria-label="Open menu">
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+      <span class="hamburger-bar"></span>
+    </button>
+
+    <div class="hidden lg:flex items-center gap-4">
       <span class="text-xs font-medium uppercase tracking-wider text-[var(--accent)]">Contact</span>
       <div class="email-wrapper">
         <button
@@ -38,6 +57,20 @@
   </div>
 </nav>
 
+<div id="mobile-menu" class="mobile-menu" aria-hidden="true">
+  <div id="mobile-backdrop" class="mobile-backdrop"></div>
+  <div class="mobile-panel">
+    <button id="close-menu" class="close-btn" aria-label="Close menu">✕</button>
+    <nav class="flex flex-col gap-6 mt-4">
+      <a href="/#main-content" class="mobile-nav-link">About</a>
+      <a href="/#experience" class="mobile-nav-link">Experience</a>
+      <a href="/#education" class="mobile-nav-link">Education</a>
+      <a href="/#skills" class="mobile-nav-link">Skills</a>
+      <a href="/#projects" class="mobile-nav-link">Projects</a>
+    </nav>
+  </div>
+</div>
+
 <style>
   .nav-logo {
     display: flex;
@@ -53,6 +86,83 @@
 
   .nav-logo:hover {
     color: var(--accent);
+  }
+
+  .nav-link {
+    font-size: 0.875rem;
+    color: var(--muted);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .nav-link:hover {
+    color: var(--accent);
+  }
+
+  .avatar-wrapper {
+    position: relative;
+    height: 2.25rem;
+    width: 2.25rem;
+    flex-shrink: 0;
+    transition: height 0.4s ease, width 0.4s ease;
+  }
+
+  .avatar-wrapper.big {
+    height: 5rem;
+    width: 5rem;
+  }
+
+  .avatar-clip {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    overflow: hidden;
+  }
+
+  .bork-tooltip {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: calc(2.5rem - 0.75rem);
+    transform: none;
+    background: var(--text);
+    color: var(--bg);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.25rem 0.6rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .bork-tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 0.75rem;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-bottom-color: var(--text);
+  }
+
+  .avatar-wrapper.big .bork-tooltip {
+    opacity: 1;
+    transition-delay: 0.4s;
+  }
+
+  .avatar-clip::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent-light), var(--accent));
+    opacity: 0;
+    transition: opacity 0.2s ease;
+  }
+
+  .nav-logo:hover .avatar-clip::after {
+    opacity: 0.35;
   }
 
   .email-wrapper {
@@ -91,12 +201,146 @@
   .tooltip.show {
     opacity: 1;
   }
+
+  .hamburger-bar {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: var(--text);
+    border-radius: 2px;
+    transition: background 0.2s;
+  }
+
+  .mobile-menu {
+    display: none;
+  }
+
+  .mobile-menu.open {
+    display: block;
+  }
+
+  .mobile-backdrop {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 200;
+    animation: fadeIn 0.2s ease;
+  }
+
+  .mobile-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    height: 100%;
+    width: 240px;
+    background: var(--bg);
+    z-index: 201;
+    padding: 1.5rem;
+    animation: slideIn 0.25s ease;
+  }
+
+  .close-btn {
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--muted);
+    display: block;
+    margin-left: auto;
+    padding: 0.25rem;
+  }
+
+  .close-btn:hover {
+    color: var(--accent);
+  }
+
+  .mobile-nav-link {
+    font-size: 1.25rem;
+    font-weight: 500;
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+
+  .mobile-nav-link:hover {
+    color: var(--accent);
+  }
+
+  @keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+  }
+
+  @keyframes slideIn {
+    from { transform: translateX(100%); }
+    to { transform: translateX(0); }
+  }
 </style>
 
 <script>
+  const hamburger = document.getElementById('hamburger');
+  const mobileMenu = document.getElementById('mobile-menu');
+  const closeMenu = document.getElementById('close-menu');
+  const backdrop = document.getElementById('mobile-backdrop');
+  const mobileLinks = document.querySelectorAll('.mobile-nav-link');
+
+  function openMenu() { mobileMenu?.classList.add('open'); }
+  function closeMenuFn() { mobileMenu?.classList.remove('open'); }
+
+  hamburger?.addEventListener('click', openMenu);
+  closeMenu?.addEventListener('click', closeMenuFn);
+  backdrop?.addEventListener('click', closeMenuFn);
+  mobileLinks.forEach(link => link.addEventListener('click', closeMenuFn));
+
   const btn = document.getElementById('copy-email');
   const tooltip = document.getElementById('copied-tooltip');
   let timeout: ReturnType<typeof setTimeout>;
+
+  const avatar = document.querySelector('.avatar-wrapper') as HTMLElement;
+  const avatarImg = avatar?.querySelector('img') as HTMLElement;
+  let hoverTimeout: ReturnType<typeof setTimeout>;
+  let borkCount = 0;
+  let isHovering = false;
+
+  function triggerBork() {
+    borkCount++;
+    const borkEl = avatar.querySelector('.bork-tooltip') as HTMLElement;
+    if (borkEl) {
+      if (borkCount % 4 === 0) {
+        borkEl.textContent = 'Please stop.';
+      } else {
+        const noises = ['bork!', 'woof!', 'arf!', 'ruff!', 'yip!', 'awoo!', 'bark!'];
+        borkEl.textContent = noises[Math.floor(Math.random() * noises.length)];
+      }
+    }
+    avatar.classList.add('big');
+    setTimeout(() => { if (!isHovering) avatar.classList.remove('big'); }, 3000);
+  }
+
+  avatar?.addEventListener('mouseenter', () => {
+    isHovering = true;
+    if (window.matchMedia('(hover: hover)').matches) {
+      hoverTimeout = setTimeout(triggerBork, 500);
+    }
+  });
+
+  avatar?.addEventListener('mouseleave', () => {
+    isHovering = false;
+    clearTimeout(hoverTimeout);
+    avatar.classList.remove('big');
+  });
+
+  avatarImg?.addEventListener('touchstart', (e) => {
+    e.preventDefault();
+    triggerBork();
+  }, { passive: false });
+
+  document.getElementById('nav-logo')?.addEventListener('click', (e) => {
+    if (window.location.pathname === '/') {
+      e.preventDefault();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+  });
 
   btn?.addEventListener('click', async () => {
     await navigator.clipboard.writeText('cole.steele.dev@gmail.com');
