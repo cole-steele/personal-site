@@ -13,20 +13,26 @@
       <span class="font-medium text-sm">Cole Steele</span>
     </a>
 
-    <div
-      class="flex gap-1 rounded-full bg-[var(--bg2)] p-1 transition-colors duration-300"
-    >
+    <div class="flex items-center gap-4">
+      <span class="text-xs font-medium uppercase tracking-wider text-[var(--accent)]">Contact</span>
+      <div class="email-wrapper">
+        <button
+          id="copy-email"
+          aria-label="Copy email address to clipboard"
+          class="text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors duration-200 cursor-pointer bg-transparent border-none p-0"
+        >
+          cole.steele.dev@gmail.com
+        </button>
+        <div id="copied-tooltip" class="tooltip" role="status" aria-live="polite">Copied!</div>
+      </div>
       <a
-        href="#"
-        class="rounded-full bg-[var(--accent)] px-4 py-1 text-sm font-medium text-white"
+        href="https://github.com/cole-steele"
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label="GitHub profile (opens in new tab)"
+        class="text-sm text-[var(--muted)] hover:text-[var(--accent)] transition-colors duration-200"
       >
-        About
-      </a>
-      <a
-        href="#"
-        class="rounded-full px-4 py-1 text-sm text-[var(--muted)] transition-colors duration-200 hover:text-[var(--text)]"
-      >
-        Music
+        GitHub
       </a>
     </div>
   </div>
@@ -48,4 +54,54 @@
   .nav-logo:hover {
     color: var(--accent);
   }
+
+  .email-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+  }
+
+  .tooltip {
+    position: absolute;
+    top: calc(100% + 10px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: var(--text);
+    color: var(--bg);
+    font-size: 0.75rem;
+    font-weight: 500;
+    padding: 0.35rem 0.75rem;
+    border-radius: 6px;
+    white-space: nowrap;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.15s ease;
+  }
+
+  .tooltip::before {
+    content: '';
+    position: absolute;
+    bottom: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    border: 5px solid transparent;
+    border-bottom-color: var(--text);
+  }
+
+  .tooltip.show {
+    opacity: 1;
+  }
 </style>
+
+<script>
+  const btn = document.getElementById('copy-email');
+  const tooltip = document.getElementById('copied-tooltip');
+  let timeout: ReturnType<typeof setTimeout>;
+
+  btn?.addEventListener('click', async () => {
+    await navigator.clipboard.writeText('cole.steele.dev@gmail.com');
+    tooltip?.classList.add('show');
+    clearTimeout(timeout);
+    timeout = setTimeout(() => tooltip?.classList.remove('show'), 2000);
+  });
+</script>

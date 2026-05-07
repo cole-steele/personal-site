@@ -2,19 +2,58 @@
   <hr class="border-t border-[var(--bg2)] my-0" />
 </div>
 
-<section class="max-w-5xl mx-auto px-12 py-12" id="skills">
-  <div class="text-xs font-medium uppercase tracking-wider text-[var(--accent)] mb-6">
-    Skills & Tools
-  </div>
-  <div class="flex flex-wrap gap-2.5">
-    <span class="tag">TypeScript</span>
-    <span class="tag">React</span>
-    <span class="tag">Node.js</span>
-    <span class="tag">PostgreSQL</span>
-  </div>
-</section>
+<div class="max-w-5xl mx-auto px-12 py-12 skills-grid">
+  <section id="skills">
+    <h2 class="text-xs font-medium uppercase tracking-wider text-[var(--accent)] mb-6">
+      Skills & Tools
+    </h2>
+    <div class="flex flex-wrap gap-2.5">
+      <span class="tag">TypeScript</span>
+      <span class="tag">JavaScript</span>
+      <span class="tag">Python</span>
+      <span class="tag">HTML/CSS</span>
+      <span class="tag">C++</span>
+      <span class="tag">Zsh/Bash</span>
+      <span class="tag">React</span>
+      <span class="tag">Astro.js</span>
+      <span class="tag">Node.js</span>
+      <span class="tag">PostgreSQL</span>
+      <span class="tag">MSSQL</span>
+      <span class="tag">Firebase</span>
+      <span class="tag">Git & GitHub</span>
+      <span class="tag">Vercel & Netlify</span>
+    </div>
+  </section>
+
+  <section id="it-skills">
+    <h2 class="text-xs font-medium uppercase tracking-wider text-[var(--accent)] mb-6">
+      IT Skills
+    </h2>
+    <div class="flex flex-wrap gap-2.5">
+      <span class="tag">System Administration</span>
+      <span class="tag">CI/CD</span>
+      <span class="tag">Networking</span>
+      <span class="tag">Virtualization</span>
+      <span class="tag">MDM</span>
+      <span class="tag">Mosyle</span>
+      <span class="tag">Google Admin</span>
+      <span class="tag">Freshdesk</span>
+      <span class="tag">Helpdesk & Ticketing</span>
+      <span class="tag">Operating Systems</span>
+      <span class="tag">Hardware & Device Imaging</span>
+    </div>
+  </section>
+</div>
 
 <style>
+  .skills-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+  }
+
+
+
   .tag {
     display: inline-block;
     background: var(--card-bg);
@@ -32,8 +71,12 @@
   }
 
   @media (max-width: 720px) {
+    .skills-grid {
+      grid-template-columns: 1fr;
+    }
+
     section {
-      padding: 2rem 1.25rem;
+      padding: 0;
     }
   }
 </style>
