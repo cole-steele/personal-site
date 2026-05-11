@@ -1,0 +1,62 @@
+<div class="max-w-5xl mx-auto px-12">
+  <hr class="border-t border-[var(--bg2)] my-0" />
+</div>
+
+<section class="max-w-5xl mx-auto px-12 py-12" id="education">
+  <h2 class="text-xs font-medium uppercase tracking-wider text-[var(--accent)] mb-6">
+    Education & Certifications
+  </h2>
+  <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
+    <div class="info-card rounded-lg bg-[var(--card-bg)] p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
+      <img src="/logos/umd-bulldog-logo.png" alt="" class="card-logo card-logo-square" loading="lazy" />
+      <div class="text-xs text-[var(--muted)] mb-2 pr-12">Sep 2019 – Dec 2023</div>
+      <div class="font-display text-xl font-bold text-[var(--text)] mb-1 pr-12">University of Minnesota Duluth</div>
+      <div class="text-sm text-[var(--muted)] leading-relaxed">B.S. Computer Science</div>
+    </div>
+    <div class="info-card rounded-lg bg-[var(--card-bg)] p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
+      <img src="/logos/infinite-campus-logo.png" alt="" class="card-logo card-logo-wide" loading="lazy" />
+      <div class="text-xs text-[var(--muted)] mb-2 pr-12">Fall 2024</div>
+      <div class="font-display text-xl font-bold text-[var(--text)] mb-1 pr-12">Mastering Campus</div>
+      <div class="text-sm text-[var(--muted)] leading-relaxed">Campus Essentials</div>
+      <div class="text-xs text-[var(--muted)] mt-2 opacity-70">Infinite Campus · Campus Passport</div>
+    </div>
+    <div class="info-card rounded-lg bg-[var(--card-bg)] p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1">
+      <img src="/logos/infinite-campus-logo.png" alt="" class="card-logo card-logo-wide" loading="lazy" />
+      <div class="text-xs text-[var(--muted)] mb-2 pr-12">Winter 2025</div>
+      <div class="font-display text-xl font-bold text-[var(--text)] mb-1 pr-12">Campus Schema</div>
+      <div class="text-sm text-[var(--muted)] leading-relaxed">MSSQL Backend</div>
+      <div class="text-xs text-[var(--muted)] mt-2 opacity-70">Infinite Campus · Campus Passport</div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .info-card {
+    cursor: default;
+    position: relative;
+  }
+
+  .card-logo {
+    object-fit: contain;
+    pointer-events: none;
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+  }
+
+  .card-logo-square {
+    height: 44px;
+    width: 44px;
+  }
+
+  .card-logo-wide {
+    height: 28px;
+    width: 56px;
+  }
+
+  @media (max-width: 720px) {
+    section {
+      padding: 2rem 1.25rem;
+    }
+  }
+</style>

@@ -8,10 +8,11 @@
   </h2>
   <div class="grid grid-cols-1 md:grid-cols-3 gap-5">
     <div
-      class="rounded-lg bg-[var(--card-bg)] p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
+      class="info-card rounded-lg bg-[var(--card-bg)] p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
     >
-      <div class="text-xs text-[var(--muted)] mb-2">April 2024 - Current</div>
-      <div class="font-display text-xl font-bold text-[var(--text)] mb-1">
+      <img src="/logos/belle-plaine-tigers.png" alt="" class="card-logo card-logo-square" loading="lazy" />
+      <div class="text-xs text-[var(--muted)] mb-2 pr-12">April 2024 - Current</div>
+      <div class="font-display text-xl font-bold text-[var(--text)] mb-1 pr-12">
         ISD 716
       </div>
       <div class="text-sm text-[var(--muted)] leading-relaxed">
@@ -20,10 +21,11 @@
     </div>
 
     <div
-      class="rounded-lg bg-[var(--card-bg)] p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
+      class="info-card rounded-lg bg-[var(--card-bg)] p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
     >
-      <div class="text-xs text-[var(--muted)] mb-2">May 2022 - September 2022</div>
-      <div class="font-display text-xl font-bold text-[var(--text)] mb-1">
+      <img src="/logos/mosquito-squad-logo.png" alt="" class="card-logo card-logo-square" loading="lazy" />
+      <div class="text-xs text-[var(--muted)] mb-2 pr-12">May 2022 - September 2022</div>
+      <div class="font-display text-xl font-bold text-[var(--text)] mb-1 pr-12">
         MS of Northeast Minnesota
       </div>
       <div class="text-sm text-[var(--muted)] leading-relaxed">
@@ -32,10 +34,11 @@
     </div>
 
     <div
-      class="rounded-lg bg-[var(--card-bg)] p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
+      class="info-card rounded-lg bg-[var(--card-bg)] p-6 transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
     >
-      <div class="text-xs text-[var(--muted)] mb-2">February 2020 - March 2021</div>
-      <div class="font-display text-xl font-bold text-[var(--text)] mb-1">
+      <img src="/logos/amazon-logo.png" alt="" class="card-logo card-logo-wide" loading="lazy" />
+      <div class="text-xs text-[var(--muted)] mb-2 pr-12">February 2020 - March 2021</div>
+      <div class="font-display text-xl font-bold text-[var(--text)] mb-1 pr-12">
         Amazon
       </div>
       <div class="text-sm text-[var(--muted)] leading-relaxed">
@@ -46,8 +49,27 @@
 </section>
 
 <style>
-  div.rounded-lg {
+  .info-card {
     cursor: default;
+    position: relative;
+  }
+
+  .card-logo {
+    object-fit: contain;
+    pointer-events: none;
+    position: absolute;
+    right: 1.25rem;
+    top: 1.25rem;
+  }
+
+  .card-logo-square {
+    height: 44px;
+    width: 44px;
+  }
+
+  .card-logo-wide {
+    height: 28px;
+    width: 56px;
   }
 
   @media (max-width: 720px) {

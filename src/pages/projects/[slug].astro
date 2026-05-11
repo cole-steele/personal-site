@@ -1,0 +1,117 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Navigation from '../../components/Navigation.astro';
+import { projects } from '../../data/projects';
+
+export function getStaticPaths() {
+  return projects.map((project) => ({
+    params: { slug: project.slug },
+    props: { project },
+  }));
+}
+
+const { project } = Astro.props;
+---
+
+<Layout title={`${project.name} — Cole Steele`}>
+  <Navigation />
+  <main class="pt-32 pb-16 max-w-5xl mx-auto px-12">
+    <a
+      id="back-btn"
+      href="/"
+      class="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-white hover:opacity-90 transition-opacity duration-200 mb-8"
+    >
+      ← Back
+    </a>
+
+    {project.image && (
+      <div class="w-1/2 rounded-2xl overflow-hidden mb-8 bg-[var(--card-bg)]" style="height: 240px;">
+        <img
+          src={project.image}
+          alt={`${project.name} preview`}
+          class={project.imageClass ?? "w-full h-full object-cover object-center"}
+          style={project.imageStyle}
+        />
+      </div>
+    )}
+
+    {project.url ? (
+      <a
+        href={project.url}
+        target="_blank"
+        rel="noopener noreferrer"
+        class="group flex items-center gap-3 mb-4"
+      >
+        <h1 class="font-display text-5xl font-black text-[var(--text)] group-hover:text-[var(--accent)] transition-colors duration-200">
+          {project.name}
+        </h1>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-7 h-7 text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors duration-200 flex-shrink-0 mt-2">
+          <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z" clip-rule="evenodd" />
+        </svg>
+      </a>
+    ) : (
+      <h1 class="font-display text-5xl font-black text-[var(--text)] mb-4">
+        {project.name}
+      </h1>
+    )}
+
+    <div class="flex flex-wrap gap-2 mb-8">
+      {project.tags.map((tag) => (
+        <span class="text-xs bg-[var(--card-bg)] text-[var(--muted)] px-3 py-1 rounded-full cursor-default select-none transition-all duration-200 hover:bg-[var(--accent)] hover:text-white">{tag}</span>
+      ))}
+    </div>
+
+    <div class="mb-10 max-w-2xl space-y-8">
+      <div>
+        <h2 class="text-xs font-medium uppercase tracking-wider text-[var(--accent)] mb-3">Description</h2>
+        <div class="text-[var(--muted)] leading-relaxed space-y-4" set:html={project.longDescription} />
+      </div>
+      {project.technicalDescription && (
+        <div>
+          <h2 class="text-xs font-medium uppercase tracking-wider text-[var(--accent)] mb-3">Technical</h2>
+          <div class="text-[var(--muted)] leading-relaxed space-y-4" set:html={project.technicalDescription} />
+        </div>
+      )}
+    </div>
+
+    <div class="flex gap-4">
+      {project.github && (
+        <a
+          href={project.github}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-5 py-2 text-sm font-medium text-white hover:opacity-90 transition-opacity duration-200"
+        >
+          GitHub
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5">
+            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      )}
+      {project.demo && (
+        <a
+          href={project.demo}
+          target="_blank"
+          rel="noopener noreferrer"
+          class="inline-flex items-center gap-2 rounded-full bg-[var(--card-bg)] px-5 py-2 text-sm font-medium text-[var(--text)] hover:opacity-90 transition-opacity duration-200"
+        >
+          Live Demo
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5">
+            <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z" clip-rule="evenodd" />
+          </svg>
+        </a>
+      )}
+    </div>
+  </main>
+
+<script>
+  document.getElementById('back-btn')?.addEventListener('click', (e) => {
+    e.preventDefault();
+    const cameFromSite = document.referrer && document.referrer.includes(window.location.origin);
+    if (cameFromSite) {
+      sessionStorage.setItem('scrollTo', 'projects');
+    }
+    window.location.href = '/';
+  });
+</script>
+</Layout>
