@@ -28,3 +28,12 @@ import Projects from '../components/Projects.astro';
     </div>
   </main>
 </Layout>
+
+<script>
+  const target = sessionStorage.getItem('scrollTo');
+  if (target) {
+    sessionStorage.removeItem('scrollTo');
+    const el = document.getElementById(target);
+    if (el) el.scrollIntoView({ behavior: 'instant' });
+  }
+</script>
