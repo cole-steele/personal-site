@@ -22,8 +22,19 @@ const { title = 'Cole Steele | Software Engineer' } = Astro.props;
     />
   </head>
   <body>
-    <a href="#main-content" class="skip-link">Skip to content</a>
+    <a href="#main-content" class="skip-link" id="skip-link">Skip to content</a>
     <slot />
+    <script>
+      document.getElementById('skip-link')?.addEventListener('click', (event) => {
+        const target = document.getElementById('main-content');
+        if (!target) return;
+
+        event.preventDefault();
+        target.focus({ preventScroll: true });
+        target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        history.replaceState(null, '', '#main-content');
+      });
+    </script>
   </body>
 </html>
 
@@ -56,9 +67,9 @@ const { title = 'Cole Steele | Software Engineer' } = Astro.props;
   }
 
   .skip-link {
-    position: absolute;
-    top: -100%;
-    left: 1rem;
+    position: fixed;
+    top: 0;
+    left: 50%;
     background: var(--accent);
     color: #fff;
     padding: 0.5rem 1rem;
@@ -66,11 +77,13 @@ const { title = 'Cole Steele | Software Engineer' } = Astro.props;
     font-size: 0.875rem;
     font-weight: 500;
     text-decoration: none;
+    transform: translate(-50%, -120%);
+    transition: transform 0.15s ease;
     z-index: 9999;
   }
 
-  .skip-link:focus {
-    top: 0;
+  .skip-link:focus-visible {
+    transform: translate(-50%, 0);
   }
 
   *:focus-visible {

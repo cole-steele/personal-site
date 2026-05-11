@@ -47,7 +47,7 @@ export const projects: Project[] = [
   {
     slug: "ic-student-email",
     name: "IC Student Email Generation",
-    description: "Automated SQL script that queries Infinite Campus student records to generate and provision student email addresses into Google Workspace via LDAP.",
+    description: "SQL automation for generating student emails and accounts from Infinite Campus records.",
     longDescription: "Page description!",
     image: "/projects/ic-student-email.png",
     imageClass: "w-full h-full",

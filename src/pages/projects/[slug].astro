@@ -15,7 +15,7 @@ const { project } = Astro.props;
 
 <Layout title={`${project.name} — Cole Steele`}>
   <Navigation />
-  <main class="pt-32 pb-16 max-w-5xl mx-auto px-12">
+  <main id="main-content" tabindex="-1" class="pt-28 md:pt-32 pb-16 max-w-5xl mx-auto px-5 md:px-12">
     <a
       id="back-btn"
       href="/"
@@ -25,7 +25,7 @@ const { project } = Astro.props;
     </a>
 
     {project.image && (
-      <div class="w-1/2 rounded-2xl overflow-hidden mb-8 bg-[var(--card-bg)]" style="height: 240px;">
+      <div class="w-full max-w-xl md:w-1/2 rounded-2xl overflow-hidden mb-8 bg-[var(--card-bg)] aspect-[16/10] md:aspect-auto md:h-60">
         <img
           src={project.image}
           alt={`${project.name} preview`}
@@ -40,17 +40,17 @@ const { project } = Astro.props;
         href={project.url}
         target="_blank"
         rel="noopener noreferrer"
-        class="group flex items-center gap-3 mb-4"
+        class="group flex items-start gap-3 mb-4"
       >
-        <h1 class="font-display text-5xl font-black text-[var(--text)] group-hover:text-[var(--accent)] transition-colors duration-200">
+        <h1 class="font-display text-3xl md:text-5xl font-black leading-tight text-[var(--text)] group-hover:text-[var(--accent)] transition-colors duration-200">
           {project.name}
         </h1>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-7 h-7 text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors duration-200 flex-shrink-0 mt-2">
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-5 h-5 md:w-7 md:h-7 text-[var(--muted)] group-hover:text-[var(--accent)] transition-colors duration-200 flex-shrink-0 mt-1 md:mt-2">
           <path fill-rule="evenodd" d="M5.22 14.78a.75.75 0 0 0 1.06 0l7.22-7.22v5.69a.75.75 0 0 0 1.5 0v-7.5a.75.75 0 0 0-.75-.75h-7.5a.75.75 0 0 0 0 1.5h5.69l-7.22 7.22a.75.75 0 0 0 0 1.06Z" clip-rule="evenodd" />
         </svg>
       </a>
     ) : (
-      <h1 class="font-display text-5xl font-black text-[var(--text)] mb-4">
+      <h1 class="font-display text-3xl md:text-5xl font-black leading-tight text-[var(--text)] mb-4">
         {project.name}
       </h1>
     )}
