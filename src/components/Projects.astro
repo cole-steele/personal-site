@@ -16,7 +16,7 @@ import { projects } from '../data/projects';
         href={`/projects/${project.slug}`}
         class="project-card rounded-lg bg-[var(--card-bg)] overflow-hidden transition-all duration-200 hover:shadow-lg hover:-translate-y-1"
       >
-        <div class="thumbnail overflow-hidden">
+        <div class={`thumbnail overflow-hidden${project.slug === 'personal-site' ? ' project-img-frame' : ''}`}>
           {project.image && (
             <img src={project.image} alt={`${project.name} preview`} class={project.imageClass ?? "w-full h-full object-cover object-center scale-125"} style={project.imageStyle} />
           )}
@@ -44,8 +44,20 @@ import { projects } from '../data/projects';
   .thumbnail {
     width: 100%;
     height: 140px;
-    background: linear-gradient(135deg, var(--accent-light) 0%, var(--accent) 100%);
-    opacity: 0.85;
+    background: var(--card-bg);
+  }
+
+  .project-img-frame {
+    position: relative;
+  }
+
+  .project-img-frame::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    z-index: 2;
+    pointer-events: none;
+    background: radial-gradient(ellipse at center, transparent 35%, rgba(0,0,0,0.55) 100%);
   }
 
   @media (max-width: 720px) {
