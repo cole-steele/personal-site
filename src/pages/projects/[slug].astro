@@ -19,7 +19,7 @@ const { project } = Astro.props;
     <a
       id="back-btn"
       href="/"
-      class="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-white hover:opacity-90 transition-opacity duration-200 mb-8"
+      class="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-4 py-1.5 text-xs font-medium uppercase tracking-wider text-white hover:bg-[var(--accent-light)] transition-all duration-300 mb-8"
     >
       ← Back
     </a>
@@ -68,7 +68,7 @@ const { project } = Astro.props;
           href={project.github}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-5 py-2 text-sm font-medium text-white hover:opacity-90 transition-opacity duration-200"
+          class="inline-flex items-center gap-2 rounded-full bg-[var(--accent)] px-5 py-2 text-sm font-medium text-white hover:bg-[var(--accent-light)] transition-all duration-300"
         >
           GitHub
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5">
@@ -89,7 +89,7 @@ const { project } = Astro.props;
           href={project.demo}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-2 rounded-full bg-[var(--card-bg)] px-5 py-2 text-sm font-medium text-[var(--text)] hover:opacity-90 transition-opacity duration-200"
+          class="inline-flex items-center gap-2 rounded-full bg-[var(--card-bg)] px-5 py-2 text-sm font-medium text-[var(--text)] hover:bg-[var(--bg2)] transition-all duration-300"
         >
           Live Demo
           <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" class="w-3.5 h-3.5">

@@ -3,7 +3,7 @@
 <nav
   class="fixed top-0 z-100 w-full bg-[var(--bg)] transition-colors duration-300"
 >
-  <div class="flex items-center justify-between px-12 py-5">
+  <div class="flex items-center justify-between px-12 py-5 nav-inner">
     <a href="/" id="nav-logo" class="nav-logo">
       <div class="avatar-wrapper">
         <div class="avatar-clip">
@@ -26,7 +26,7 @@
       <a href="/#projects" class="nav-link">Projects</a>
     </div>
 
-    <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-1 bg-transparent border-none cursor-pointer" aria-label="Open menu">
+    <button id="hamburger" class="md:hidden flex flex-col gap-1.5 p-2 bg-[var(--bg2)] hover:bg-[var(--card-bg)] active:scale-95 border-none cursor-pointer rounded-lg transition-all duration-300" aria-label="Open menu">
       <span class="hamburger-bar"></span>
       <span class="hamburger-bar"></span>
       <span class="hamburger-bar"></span>
@@ -79,6 +79,13 @@
 </div>
 
 <style>
+  @media (max-width: 720px) {
+    .nav-inner {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+  }
+
   .nav-logo {
     display: flex;
     align-items: center;
@@ -211,7 +218,7 @@
 
   .hamburger-bar {
     display: block;
-    width: 22px;
+    width: 20px;
     height: 2px;
     background: var(--text);
     border-radius: 2px;
