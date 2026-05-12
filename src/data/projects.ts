@@ -11,6 +11,8 @@ export interface Project {
   url?: string;
   github?: string;
   demo?: string;
+  githubDisabled?: boolean;
+  demoDisabled?: boolean;
 }
 
 export const projects: Project[] = [
@@ -44,11 +46,13 @@ export const projects: Project[] = [
     name: "Poke Dashboard",
     description: "SPA Dashboard built to sharpen React and Node.js skills.",
     longDescription: "Coming soon!",
-    technicalDescription: `<div style="display:flex;flex-direction:column;gap:1rem;"><p><strong>Next.js</strong> for application framework &amp; API routes</p><p><strong>React</strong> for the interactive dashboard</p><p><strong>Supabase</strong> for Postgres database &amp; auth</p></div>`,
+    technicalDescription: `<div style="display:flex;flex-direction:column;gap:1rem;"><p><strong>Next.js</strong> for application framework &amp; API routes</p><p><strong>React</strong> for the interactive dashboard</p><p><strong>Supabase</strong> for Postgres database &amp; auth</p><p><strong>SCSS</strong> wins over TailwindCSS when it comes to semi-complex, stateful UI</p></div>`,
     image: "/projects/construction.png",
     imageClass: "w-full h-full object-contain",
     imageStyle: "background:#c4922a;",
-    tags: ["Next.js", "React", "Supabase"],
+    tags: ["Next.js", "React", "Supabase", "SCSS"],
+    githubDisabled: true,
+    demoDisabled: true,
   },
   {
     slug: "ic-student-email",
@@ -59,5 +63,6 @@ export const projects: Project[] = [
     imageClass: "w-full h-full",
     imageStyle: "object-fit:cover; transform:scale(1.6) translateX(10px); transform-origin:center;",
     tags: ["MSSQL"],
+    githubDisabled: true,
   },
 ];
