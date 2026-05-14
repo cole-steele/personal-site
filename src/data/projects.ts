@@ -47,7 +47,7 @@ export const projects: Project[] = [
     name: "Poke Dashboard",
     description: "SPA Dashboard built to sharpen React and Node.js skills.",
     longDescription: "In-progress!",
-    technicalDescription: `<div style="display:flex;flex-direction:column;gap:1rem;"><p><strong>Next.js</strong> for application framework &amp; API routes</p><p><strong>React</strong> for the interactive dashboard</p><p><strong>Supabase</strong> for Postgres database &amp; auth</p><p><strong>SCSS</strong> wins over TailwindCSS when it comes to semi-complex, stateful UI</p></div>`,
+    technicalDescription: `<div style="display:flex;flex-direction:column;gap:1rem;"><p><strong>PokéAPI</strong> as a third-party REST data source</p><p><strong>Next.js</strong> for application framework &amp; API routes</p><p><strong>React</strong> for the interactive dashboard</p><p><strong>Supabase</strong> for Postgres database &amp; auth</p><p><strong>SCSS</strong> over TailwindCSS when it comes to semi-complex, stateful UI</p></div>`,
     image: "/projects/construction.png",
     imageClass: "w-full h-full object-contain",
     imageStyle: "background: linear-gradient(135deg, #e8b84b 0%, #c4922a 60%, #a67820 100%);",
