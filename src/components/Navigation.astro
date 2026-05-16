@@ -96,10 +96,7 @@
     color: var(--text);
     text-decoration: none;
     transition: color 0.2s;
-  }
-
-  .nav-logo:hover {
-    color: var(--accent);
+    -webkit-tap-highlight-color: transparent;
   }
 
   .nav-link {
@@ -107,10 +104,7 @@
     color: var(--muted);
     text-decoration: none;
     transition: color 0.2s;
-  }
-
-  .nav-link:hover {
-    color: var(--accent);
+    -webkit-tap-highlight-color: transparent;
   }
 
   .avatar-wrapper {
@@ -175,8 +169,18 @@
     transition: opacity 0.2s ease;
   }
 
-  .nav-logo:hover .avatar-clip::after {
-    opacity: 0.35;
+  @media (hover: hover) and (pointer: fine) {
+    .nav-logo:hover {
+      color: var(--accent);
+    }
+
+    .nav-link:hover {
+      color: var(--accent);
+    }
+
+    .nav-logo:hover .avatar-clip::after {
+      opacity: 0.35;
+    }
   }
 
   .email-wrapper {
@@ -225,6 +229,10 @@
     transition: background 0.2s;
   }
 
+  #hamburger {
+    -webkit-tap-highlight-color: transparent;
+  }
+
   .mobile-menu {
     display: none;
   }
@@ -262,6 +270,7 @@
     display: block;
     margin-left: auto;
     padding: 0.25rem;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .close-btn:hover {
@@ -274,10 +283,25 @@
     color: var(--text);
     text-decoration: none;
     transition: color 0.2s;
+    -webkit-tap-highlight-color: transparent;
   }
 
   .mobile-nav-link:hover {
     color: var(--accent);
+  }
+
+  @media (hover: none) {
+    #hamburger:hover {
+      background: var(--bg2);
+    }
+
+    .close-btn:hover {
+      color: var(--muted);
+    }
+
+    .mobile-nav-link:hover {
+      color: var(--text);
+    }
   }
 
   @keyframes fadeIn {

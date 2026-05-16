@@ -52,7 +52,14 @@ const { title = 'Cole Steele | Software Engineer' } = Astro.props;
   }
 
   html {
+    font-size: 100%;
     scroll-behavior: smooth;
+  }
+
+  @media (min-width: 721px) {
+    html {
+      font-size: 90%;
+    }
   }
 
   body {
@@ -86,9 +93,18 @@ const { title = 'Cole Steele | Software Engineer' } = Astro.props;
     transform: translate(-50%, 0);
   }
 
-  *:focus-visible {
+  a:focus-visible,
+  button:focus-visible,
+  input:focus-visible,
+  textarea:focus-visible,
+  select:focus-visible,
+  [tabindex]:not([tabindex="-1"]):focus-visible {
     outline: 2px solid var(--accent);
     outline-offset: 3px;
     border-radius: 3px;
+  }
+
+  [tabindex="-1"]:focus {
+    outline: none;
   }
 </style>
